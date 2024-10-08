@@ -13,7 +13,7 @@ const router = createRouter({
     },
     {
       path: '/category/:id',
-      name: 'plate',
+      name: 'category',
       component: CategoryView
     },
     {
