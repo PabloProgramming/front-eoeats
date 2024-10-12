@@ -10,12 +10,15 @@ onMounted(() => {
 })
 
 const toCategotyView = (categoryId) => {
-  console.log('hola')
   router.push(`/category/${categoryId}`)
+}
+const toCreateCategory = () => {
+  router.push(`/category`)
 }
 </script>
 
 <template>
+  <PButton label="new category" @Click="toCreateCategory"> </PButton>
   <div class="container">
     <CategoryCard
       v-for="category in categoryStore.categories"

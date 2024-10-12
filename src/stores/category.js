@@ -4,6 +4,7 @@ import axios from 'axios'
 
 export const useCategoryStore = defineStore('category', () => {
   const categories = ref()
+  const restaurantId = ref()
 
   async function getElement() {
     const response = await axios.get(
@@ -11,7 +12,14 @@ export const useCategoryStore = defineStore('category', () => {
     )
     console.log(response.data.categoryDtoList)
     categories.value = response.data.categoryDtoList
+    restaurantId.value = response.data.id
+  }
+  async function createCategory(newCategory) {
+    const response = await axios.post('http://localhost:8080/category', {
+      ...newCategory,
+      restaurantId: restaurantId.value
+    })
   }
 
-  return { categories, getElement }
+  return { categories, getElement, createCategory }
 })
