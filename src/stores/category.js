@@ -14,12 +14,24 @@ export const useCategoryStore = defineStore('category', () => {
     categories.value = response.data.categoryDtoList
     restaurantId.value = response.data.id
   }
+
   async function createCategory(newCategory) {
     const response = await axios.post('http://localhost:8080/category', {
       ...newCategory,
       restaurantId: restaurantId.value
     })
+    return response
   }
 
-  return { categories, getElement, createCategory }
+  async function editCategory(category) {
+    const payload = { ...category, restaurantId: restaurantId.value }
+    console.log(payload)
+
+    const response = await axios.put('http://localhost:8080/category', {
+      ...payload
+    })
+    return response
+  }
+
+  return { categories, getElement, createCategory, editCategory }
 })

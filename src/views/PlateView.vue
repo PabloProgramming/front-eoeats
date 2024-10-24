@@ -17,7 +17,7 @@ onMounted(() => {
   </div>
 </template>
 
-<style>
+<style scoped>
 .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

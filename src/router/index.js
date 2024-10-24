@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import CategoryView from '@/views/CategoryView.vue'
 import PlateView from '@/views/PlateView.vue'
 import CreateCategory from '@/views/CreateCategoryView.vue'
+import EditCategoryView from '@/views/EditCategoryView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/category',
       name: 'newCategory',
       component: CreateCategory
+    },
+    {
+      path: '/category/edit/:id',
+      name: 'editCategory',
+      component: EditCategoryView
     }
   ]
 })

@@ -18,23 +18,33 @@ const toCreateCategory = () => {
 </script>
 
 <template>
-  <PButton label="new category" @Click="toCreateCategory"> </PButton>
-  <div class="container">
-    <CategoryCard
-      v-for="category in categoryStore.categories"
-      :key="category.id"
-      :category="category"
-      class="card"
-      @click="toCategotyView(category.id)"
-    >
-    </CategoryCard>
+  <div>
+    <div class="buttons">
+      <PButton label="new category" @Click="toCreateCategory"> </PButton>
+    </div>
+    <div class="container">
+      <CategoryCard
+        v-for="category in categoryStore.categories"
+        :key="category.id"
+        :category="category"
+        class="card"
+        @click="toCategotyView(category.id)"
+      >
+      </CategoryCard>
+    </div>
   </div>
 </template>
 
-<style>
+<style scoped>
+.buttons {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 10px;
+}
 .container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  gap: 15px;
 }
 .card {
   width: 200px;
