@@ -5,11 +5,17 @@ import axios from 'axios'
 export const usePlateStore = defineStore('plate', () => {
   const plates = ref([])
   const plate = ref({})
+  const category = ref({})
+
+  function resetCategory() {
+    category.value = {}
+  }
 
   async function getElement(categoryId) {
     const response = await axios.get(`http://localhost:8080/category/${categoryId}`)
-    console.log(response.data.plateDtoList)
+
     plates.value = response.data.platesByCategory
+    category.value = response.data
   }
 
   async function getDetail(plateId) {
@@ -17,5 +23,5 @@ export const usePlateStore = defineStore('plate', () => {
     console.log(response.data)
     plate.value = response.data
   }
-  return { plate, plates, getElement, getDetail }
+  return { plate, plates, category, getElement, getDetail, resetCategory }
 })

@@ -4,8 +4,10 @@ defineProps({ category: Object })
 
 <template>
   <PCard>
+    <template #header>
+      <PImage :src="category.image" width="200" />
+    </template>
     <template #title>{{ category.name }}</template>
-    <template #content> <PImage :src="category.image" width="200" /></template>
   </PCard>
 </template>
-<style></style>
+<style scoped></style>
