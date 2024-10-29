@@ -4,6 +4,7 @@ import CategoryView from '@/views/CategoryView.vue'
 import PlateView from '@/views/PlateView.vue'
 import CreateCategory from '@/views/CreateCategoryView.vue'
 import EditCategoryView from '@/views/EditCategoryView.vue'
+import CreatePlateView from '@/views/CreatePlateView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,6 +18,11 @@ const router = createRouter({
       path: '/category/:id',
       name: 'category',
       component: CategoryView
+    },
+    {
+      path: '/plate',
+      name: 'newPlate',
+      component: CreatePlateView
     },
     {
       path: '/plate/:id',

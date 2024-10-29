@@ -9,8 +9,13 @@ import 'primeicons/primeicons.css'
 import Card from 'primevue/card'
 import Image from 'primevue/image'
 import InputText from 'primevue/inputtext'
+import InputNumber from 'primevue/inputnumber'
 import Button from 'primevue/button'
 import FloatLabel from 'primevue/floatlabel'
+import Select from 'primevue/select'
+import Checkbox from 'primevue/checkbox'
+import MultiSelect from 'primevue/multiselect'
+
 const app = createApp(App)
 app.use(createPinia())
 app.use(router)
@@ -24,4 +29,8 @@ app.component('PImage', Image)
 app.component('PInputText', InputText)
 app.component('PButton', Button)
 app.component('PFloatLabel', FloatLabel)
+app.component('PSelect', Select)
+app.component('PCheckbox', Checkbox)
+app.component('PMultiSelect', MultiSelect)
+app.component('PInputNumber', InputNumber)
 app.mount('#app')
