@@ -1,11 +1,11 @@
 <script setup>
-import { usePlateStore } from '@/stores/plate'
+import { useCategoryStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 
 defineEmits(['newCategoryEmit', 'editCategoryEmit'])
-const plateStore = usePlateStore()
-const { category } = storeToRefs(plateStore)
+const categoryStore = useCategoryStore()
+const { category } = storeToRefs(categoryStore)
 const initCategory = { image: '', name: '' }
 const newCategory = ref(category.value?.id ? { ...category.value } : { ...initCategory })
 const payload = () => {

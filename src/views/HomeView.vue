@@ -6,7 +6,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 const categoryStore = useCategoryStore()
 onMounted(() => {
-  categoryStore.getElement()
+  categoryStore.getRestaurant()
 })
 
 const toCategotyView = (categoryId) => {
@@ -20,7 +20,7 @@ const toCreateCategory = () => {
 <template>
   <div>
     <div class="buttons">
-      <PButton label="new category" @Click="toCreateCategory"> </PButton>
+      <PButton label="New category" @Click="toCreateCategory" />
     </div>
     <div class="container">
       <CategoryCard
