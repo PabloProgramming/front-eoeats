@@ -1,0 +1,6 @@
+export { default as BackComponent } from './BackComponent.vue'
+export { default as CategoryCard } from './CategoryCard.vue'
+export { default as NewCategory } from './NewCategory.vue'
+export { default as NewPlate } from './NewPlate.vue'
+export { default as PlateCard } from './PlateCard.vue'
+export { default as PlateDetail } from './PlateDetail.vue'

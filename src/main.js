@@ -16,6 +16,8 @@ import Select from 'primevue/select'
 import Checkbox from 'primevue/checkbox'
 import MultiSelect from 'primevue/multiselect'
 
+import Chip from 'primevue/chip'
+
 const app = createApp(App)
 app.use(createPinia())
 app.use(router)
@@ -33,4 +35,5 @@ app.component('PSelect', Select)
 app.component('PCheckbox', Checkbox)
 app.component('PMultiSelect', MultiSelect)
 app.component('PInputNumber', InputNumber)
+app.component('PChip', Chip)
 app.mount('#app')
