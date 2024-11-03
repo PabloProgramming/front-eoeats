@@ -1,14 +1,11 @@
 <script setup>
-import NewCategory from '@/components/NewCategory.vue'
+import { BackComponent, NewCategory } from '@/components'
 import { OK_RESPONSE } from '@/constants'
 import { useCategoryStore } from '@/stores/category'
-import { usePlateStore } from '@/stores/plate'
 import { useRouter } from 'vue-router'
 
 const categoryStore = useCategoryStore()
-const plateStore = usePlateStore()
-const { resetCategory } = plateStore
-
+const { resetCategory } = categoryStore
 resetCategory()
 
 const router = useRouter()
@@ -23,7 +20,15 @@ const createCategory = async (newCategory) => {
 </script>
 
 <template>
+  <div class="header">
+    <BackComponent url="/" />
+  </div>
   <NewCategory @new-category-emit="createCategory($event)"> </NewCategory>
 </template>
 
-<style></style>
+<style scoped>
+.header {
+  height: 50px;
+  position: relative;
+}
+</style>

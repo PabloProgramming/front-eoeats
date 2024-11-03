@@ -1,5 +1,5 @@
 <script setup>
-import { ALLERGENS_TYPES, PLATE_TYPES } from '@/constants'
+import { PLATE_TYPES } from '@/constants'
 import { useCategoryStore } from '@/stores'
 import { usePlateStore } from '@/stores/plate'
 import { storeToRefs } from 'pinia'
@@ -16,11 +16,12 @@ const initPlate = {
   price: 0,
   type: null,
   categoryId: category.value.id,
-  allergens: [],
   isAvailable: true,
   isKitchenPrinter: false
 }
+
 const newPlate = ref(plate.value?.id ? { ...plate.value } : { ...initPlate })
+
 const payload = () => {
   return {
     image: newPlate.value.image,
@@ -28,8 +29,7 @@ const payload = () => {
     price: newPlate.value.price,
     type: Number(newPlate.value.type),
     categoryId: category.value.id,
-    allergens: newPlate.value.allergens,
-    isAvailable: newPlate.value.isAvailable,
+    isAvailable: newPlate.value.available,
     isKitchenPrinter: newPlate.value.isKitchenPrinter
   }
 }
@@ -38,7 +38,6 @@ const payload = () => {
 <template>
   <PCard>
     <template #content>
-      {{ plate.id }}
       <div class="formContainer">
         <PInputText v-model="newPlate.image" placeholder="Url image" />
         <PInputText v-model="newPlate.name" placeholder="Name" />
@@ -55,33 +54,37 @@ const payload = () => {
           optionValue="code"
           placeholder="Type"
         />
-        <PMultiSelect
-          v-model="newPlate.allergens"
-          :options="ALLERGENS_TYPES"
-          optionLabel="name"
-          optionValue="code"
-          placeholder="Allergen"
-        />
-        <div class="flex items-center">
-          <PCheckbox
-            v-model="newPlate.isAvailable"
-            inputId="isAvailable"
-            name="isAvailable"
-            binary
-          />
-          <label for="isAvailable" class="ml-2"> Available</label>
+        <div class="checkbox">
+          <PCheckbox v-model="newPlate.available" inputId="isAvailable" name="isAvailable" binary />
+          <label for="isAvailable" class="ml-2">Available</label>
         </div>
       </div>
     </template>
     <template #footer>
-      <PButton v-if="plate.id" @Click="$emit('editPlateEmit', payload())" label="Edit" />
-      <PButton v-else @Click="$emit('newPlateEmit', payload())" label="Save" />
+      <div class="buttonContainer">
+        <PButton v-if="plate.id" @Click="$emit('editPlateEmit', payload())" label="Edit" />
+        <PButton v-else @Click="$emit('newPlateEmit', payload())" label="Save" />
+      </div>
     </template>
   </PCard>
 </template>
 <style scoped>
+.buttonContainer {
+  display: flex;
+  justify-content: end;
+}
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 .formContainer {
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 15px;
+}
+.formContainer > * {
+  width: 250px;
 }
 </style>

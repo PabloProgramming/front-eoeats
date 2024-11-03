@@ -2,7 +2,6 @@
 import { useCategoryStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
-
 defineEmits(['newCategoryEmit', 'editCategoryEmit'])
 const categoryStore = useCategoryStore()
 const { category } = storeToRefs(categoryStore)
@@ -19,20 +18,27 @@ const payload = () => {
 <template>
   <PCard>
     <template #content>
-      {{ category.id }}
       <div class="formContainer">
         <PInputText v-model="newCategory.image" placeholder="Image" />
         <PInputText v-model="newCategory.name" placeholder="Name" />
       </div>
     </template>
     <template #footer>
-      <PButton v-if="category.id" @Click="$emit('editCategoryEmit', payload())" label="Edit" />
-      <PButton v-else @Click="$emit('newCategoryEmit', payload())" label="Save" />
+      <div class="buttonContainer">
+        <PButton v-if="category.id" @Click="$emit('editCategoryEmit', payload())" label="Edit" />
+        <PButton v-else @Click="$emit('newCategoryEmit', payload())" label="Save" />
+      </div>
     </template>
   </PCard>
 </template>
 <style scoped>
 .formContainer {
   display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.buttonContainer {
+  display: flex;
+  justify-content: end;
 }
 </style>

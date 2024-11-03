@@ -1,0 +1,7 @@
+export { default as CategoryView } from './CategoryView.vue'
+export { default as CreateCategoryView } from './CreateCategoryView.vue'
+export { default as CreatePlateView } from './CreatePlateView.vue'
+export { default as EditCategoryView } from './EditCategoryView.vue'
+export { default as EditPlateView } from './EditPlateView.vue'
+export { default as HomeView } from './HomeView.vue'
+export { default as PlateView } from './PlateView.vue'

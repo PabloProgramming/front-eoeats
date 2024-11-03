@@ -10,14 +10,16 @@ export const useCategoryStore = defineStore('category', () => {
   const category = ref({})
   const plateStore = usePlateStore()
   const { plates } = storeToRefs(plateStore)
+
   async function getRestaurant() {
     const response = await axios.get(`${URL}/restaurant/e7f9c4a6-b658-4b13-ac15-e2a34eb040e4`)
-    console.log(response.data.categoryDtoList)
     categories.value = response.data.categoryDtoList
     restaurantId.value = response.data.id
   }
 
   async function getCategory(categoryId) {
+    plates.value = []
+    category.value = {}
     const response = await axios.get(`${URL}/category/${categoryId}`)
 
     plates.value = response.data.platesByCategory
@@ -46,6 +48,10 @@ export const useCategoryStore = defineStore('category', () => {
     return response
   }
 
+  async function resetCategory() {
+    category.value = {}
+  }
+
   return {
     categories,
     category,
@@ -53,6 +59,7 @@ export const useCategoryStore = defineStore('category', () => {
     getCategory,
     createCategory,
     editCategory,
-    deleteCategory
+    deleteCategory,
+    resetCategory
   }
 })

@@ -1,10 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import CategoryView from '@/views/CategoryView.vue'
-import PlateView from '@/views/PlateView.vue'
-import CreateCategory from '@/views/CreateCategoryView.vue'
-import EditCategoryView from '@/views/EditCategoryView.vue'
-import CreatePlateView from '@/views/CreatePlateView.vue'
+import {
+  CategoryView,
+  CreateCategoryView,
+  CreatePlateView,
+  EditCategoryView,
+  EditPlateView,
+  HomeView,
+  PlateView
+} from '@/views'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +23,16 @@ const router = createRouter({
       component: CategoryView
     },
     {
+      path: '/category',
+      name: 'newCategory',
+      component: CreateCategoryView
+    },
+    {
+      path: '/category/edit/:id',
+      name: 'editCategory',
+      component: EditCategoryView
+    },
+    {
       path: '/plate',
       name: 'newPlate',
       component: CreatePlateView
@@ -30,14 +43,9 @@ const router = createRouter({
       component: PlateView
     },
     {
-      path: '/category',
-      name: 'newCategory',
-      component: CreateCategory
-    },
-    {
-      path: '/category/edit/:id',
-      name: 'editCategory',
-      component: EditCategoryView
+      path: '/plate/edit/:id',
+      name: 'editPlate',
+      component: EditPlateView
     }
   ]
 })

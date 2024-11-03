@@ -1,5 +1,5 @@
 <script setup>
-import CategoryCard from '@/components/CategoryCard.vue'
+import { CategoryCard } from '@/components'
 import { useCategoryStore } from '@/stores/category'
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'

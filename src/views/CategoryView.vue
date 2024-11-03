@@ -1,5 +1,5 @@
 <script setup>
-import PlateCard from '@/components/PlateCard.vue'
+import { BackComponent, PlateCard } from '@/components'
 import { OK_RESPONSE } from '@/constants'
 import { useCategoryStore } from '@/stores/category'
 import { usePlateStore } from '@/stores/plate'
@@ -40,10 +40,11 @@ const toCreatePlate = () => {
 
 <template>
   <div class="info">
+    <BackComponent url="/" />
     <h2 class="title">{{ category.name }}</h2>
     <div class="buttons">
-      <PButton icon="pi pi-pencil" label="Edit" severity="warn" @Click="toEditCategoryView" />
       <PButton icon="pi pi-trash" label="Delete" severity="danger" @Click="handleDeleteCategory" />
+      <PButton icon="pi pi-pencil" label="Edit" severity="warn" @Click="toEditCategoryView" />
       <PButton label="New plate" @Click="toCreatePlate" />
     </div>
   </div>
@@ -64,14 +65,13 @@ const toCreatePlate = () => {
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
-}
-.title {
-  margin-left: auto;
+  position: relative;
 }
 .buttons {
+  position: absolute;
+  right: 0;
   display: flex;
   gap: 10px;
-  margin-left: auto;
 }
 .container {
   display: grid;

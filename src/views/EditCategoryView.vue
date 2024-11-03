@@ -1,5 +1,5 @@
 <script setup>
-import NewCategory from '@/components/NewCategory.vue'
+import { BackComponent, NewCategory } from '@/components'
 import { OK_RESPONSE } from '@/constants'
 import { useCategoryStore } from '@/stores/category'
 import { onMounted } from 'vue'
@@ -24,7 +24,15 @@ const handleEditCategory = async (category) => {
 </script>
 
 <template>
+  <div class="header">
+    <BackComponent url="/" />
+  </div>
   <NewCategory @edit-category-emit="handleEditCategory($event)"> </NewCategory>
 </template>
 
-<style></style>
+<style scoped>
+.header {
+  height: 50px;
+  position: relative;
+}
+</style>
