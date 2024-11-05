@@ -43,7 +43,7 @@ const toCreatePlate = () => {
     <BackComponent url="/" />
     <h2 class="title">{{ category.name }}</h2>
     <div class="buttons">
-      <PButton icon="pi pi-trash" label="Delete" severity="danger" @Click="handleDeleteCategory" />
+      <PButton icon="pi pi-trash" label="Delete" severity="danger" @click="handleDeleteCategory" />
       <PButton icon="pi pi-pencil" label="Edit" severity="warn" @Click="toEditCategoryView" />
       <PButton label="New plate" @Click="toCreatePlate" />
     </div>

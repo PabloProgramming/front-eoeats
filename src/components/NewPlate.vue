@@ -17,7 +17,8 @@ const initPlate = {
   type: null,
   categoryId: category.value.id,
   isAvailable: true,
-  isKitchenPrinter: false
+  isKitchenPrinter: false,
+  description: ''
 }
 
 const newPlate = ref(plate.value?.id ? { ...plate.value } : { ...initPlate })
@@ -30,7 +31,8 @@ const payload = () => {
     type: Number(newPlate.value.type),
     categoryId: category.value.id,
     isAvailable: newPlate.value.available,
-    isKitchenPrinter: newPlate.value.isKitchenPrinter
+    isKitchenPrinter: newPlate.value.isKitchenPrinter,
+    description: newPlate.value.description
   }
 }
 </script>
@@ -41,6 +43,8 @@ const payload = () => {
       <div class="formContainer">
         <PInputText v-model="newPlate.image" placeholder="Url image" />
         <PInputText v-model="newPlate.name" placeholder="Name" />
+        <PInputText v-model="newPlate.description" placeholder="Description" />
+
         <PInputNumber
           v-model="newPlate.price"
           :minFractionDigits="2"
@@ -68,6 +72,7 @@ const payload = () => {
     </template>
   </PCard>
 </template>
+
 <style scoped>
 .buttonContainer {
   display: flex;
