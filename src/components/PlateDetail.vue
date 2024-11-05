@@ -21,11 +21,13 @@ const plateType = computed(() => {
           <span>{{ plate.price }} {{ CURRENCY }}</span>
           <PChip :label="plateType" />
           <PChip :label="plate.available ? AVAILABLE : NOT_AVAILABLE" />
+          <p>{{ plate.description }}</p>
         </div>
       </div>
     </template>
   </PCard>
 </template>
+
 <style scoped>
 .container {
   display: flex;
@@ -36,5 +38,8 @@ const plateType = computed(() => {
 
 .info > * {
   margin: 0 7px;
+}
+.info > p {
+  margin-top: 10px; /* Adjust this value to your preference */
 }
 </style>
