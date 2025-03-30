@@ -1,8 +1,9 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import axios from 'axios'
+import api from '@/api'
 
-const URL = 'http://localhost:8080' || process.env.VUE_APP_API_URL
+const URL = 'http://localhost:8080' || api
 export const usePlateStore = defineStore('plate', () => {
   const plates = ref([])
   const plate = ref({})

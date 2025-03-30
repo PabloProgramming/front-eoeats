@@ -2,8 +2,9 @@ import { ref } from 'vue'
 import { defineStore, storeToRefs } from 'pinia'
 import axios from 'axios'
 import { usePlateStore } from './plate'
+import api from '@/api'
 
-const URL = 'http://localhost:8080' || process.env.VUE_APP_API_URL
+const URL = 'http://localhost:8080' || api
 export const useCategoryStore = defineStore('category', () => {
   const categories = ref([])
   const restaurantId = ref('')
