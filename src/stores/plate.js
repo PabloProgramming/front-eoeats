@@ -1,40 +1,35 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import axios from 'axios'
-import api from '@/api'
+import api from '@/api' // Use API instance instead of axios
 
-const URL = 'http://localhost:8080' || api
 export const usePlateStore = defineStore('plate', () => {
   const plates = ref([])
   const plate = ref({})
 
   async function getPlate(plateId) {
     plate.value = {}
-    const response = await axios.get(`${URL}/plate/${plateId}`)
+    const response = await api.get(`/plate/${plateId}`)
     plate.value = response.data
   }
 
-  async function createPlate(plate) {
-    const response = await axios.post(`${URL}/plate`, { ...plate })
+  async function createPlate(newPlate) {
+    const response = await api.post('/plate', { ...newPlate })
     return response
   }
 
-  async function editPlate(plate) {
-    const payload = { ...plate }
-
-    const response = await axios.put(`${URL}/plate`, {
-      ...payload
-    })
+  async function editPlate(updatedPlate) {
+    const response = await api.put('/plate', { ...updatedPlate })
     return response
   }
 
   async function deletePlate(plateId) {
-    const response = await axios.delete(`${URL}/plate/${plateId}`)
+    const response = await api.delete(`/plate/${plateId}`)
     return response
   }
 
   async function resetPlate() {
     plate.value = {}
   }
+
   return { plate, plates, getPlate, createPlate, resetPlate, deletePlate, editPlate }
 })
