@@ -8,6 +8,7 @@ export const useCategoryStore = defineStore('category', () => {
   const restaurantId = ref('')
   const category = ref({})
   const plateStore = usePlateStore()
+
   const { plates } = storeToRefs(plateStore)
 
   async function getRestaurant() {
